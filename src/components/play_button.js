@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Play from './play'
-import Pause from './pause'
+import Play from 'play'
+import Pause from 'pause'
 import { View } from 'react-native'
 
 import Sound from 'react-native-sound';
@@ -17,7 +17,7 @@ var click = new Sound('Synth_Block_E_lo.wav', Sound.MAIN_BUNDLE, (error) => {
   // loaded successfully
   console.log('duration in seconds: ' + click.getDuration() + 'number of channels: ' + click.getNumberOfChannels());
 
-});
+}); 
 click.setVolume(1);
 
 class Player extends Component {
