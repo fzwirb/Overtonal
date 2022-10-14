@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import Play from 'play'
-import Pause from 'pause'
+import Play from './play'
+import Pause from './pause'
 import { View } from 'react-native'
+// import Click from '../sounds/Synth_Block_E_lo.wav'
 
 import Sound from 'react-native-sound';
-Sound.setCategory('Playback');
+Sound.setCategory('Playback'); 
 
-/**
+/** 
  * Init the variable to store the sound used by the metronome
  */
 var click = new Sound('Synth_Block_E_lo.wav', Sound.MAIN_BUNDLE, (error) => {
@@ -33,11 +34,9 @@ constructor(props) {
  */
 playClick = () => {
     click.play(success => {
-        if (success) {
-          // console.log('successfully finished playing');
-        } else {
+        if (!success) {
           console.log('playback failed due to audio decoding errors');
-        }
+        } 
       });  
 }
 /**

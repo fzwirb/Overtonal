@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import Metronome from "./src/screens/Metronome";
+import Navbar from "./src/components/Navbar";
 
 
  function App() {
    return(
-      <Metronome/>
+      <Navbar/>
    );
 }
 
