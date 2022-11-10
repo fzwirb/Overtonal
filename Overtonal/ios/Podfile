@@ -5,9 +5,13 @@ platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
-
 target 'Overtonal' do
   config = use_native_modules!
+
+  #permissions 
+
+  permissions_path = '../node_modules/react-native-permissions/ios'
+  pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone"
 
   # Flags change depending on the env values.
   flags = get_default_flags()
@@ -34,6 +38,11 @@ target 'Overtonal' do
   end
 
   post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+      end
+     end
     react_native_post_install(
       installer,
       # Set `mac_catalyst_enabled` to `true` in order to apply patches
@@ -42,4 +51,5 @@ target 'Overtonal' do
     )
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
+ 
 end

@@ -5,8 +5,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 //screens 
 
-import Metronome from '../screens/Metronome';
-import Tuner from '../screens/Tuner';
+import Metronome from '../screens/MetronomeScreen';
+import Tuner from '../screens/TunerScreen';
+// import TunerTest from './TunerTest';
+
 
 const metScreen = 'Metronome';
 const tunerScreen = 'Tuner';

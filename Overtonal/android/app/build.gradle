@@ -249,6 +249,8 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-sound-recorder')
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     //noinspection GradleDynamicVersion

@@ -3,6 +3,7 @@ package com.overtonal;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+import com.kevinresol.react_native_sound_recorder.RNSoundRecorderPackage;
 
 public class MainActivity extends ReactActivity {
 

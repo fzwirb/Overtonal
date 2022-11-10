@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Play from './play'
-import Pause from './pause'
+import Play from './Play'
+import Pause from './Pause'
 import { View } from 'react-native'
 // import Click from '../sounds/Synth_Block_E_lo.wav'
 
