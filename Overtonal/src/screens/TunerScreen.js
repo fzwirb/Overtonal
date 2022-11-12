@@ -3,10 +3,10 @@ import { View, Text } from 'react-native';
 
 
 
- export default function Tuner() {
-   return(
+export default function TunerScreen() {
+   return (
       <View>
-          <Text>TUNER</Text>
+         <Text>TUNER</Text>
       </View>
    );
 }
