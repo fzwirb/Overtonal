@@ -11,18 +11,18 @@ import pitchFinder from "pitchfinder";
 export default class Tuner {
     middleA = 440;
     semitone = 69;
-    noteStrings = [
+    noteNames= [
         "C",
-        "Db",
+        "C#/Db",
         "D",
-        "D♯",
+        "D#/Eb",
         "E",
         "F",
-        "Gb",
+        "F#/Gb",
         "G",
-        "Ab",
+        "G#/Ab",
         "A",
-        "Bb",
+        "A#/Bb",
         "B",
     ];
 
@@ -36,8 +36,8 @@ export default class Tuner {
             audioSource: 6,     // android only (see below)
             wavFile: 'test.wav' // default 'audio.wav'
         };
+        
         const pitchfinder = pitchFinder.YIN({ sampleRate: 44100 });
-
 
         AudioRecord.init(options);
 
@@ -46,12 +46,13 @@ export default class Tuner {
             chunk = Buffer.from(data, "base64");
             floatArray = new Float32Array(chunk);
             const frequency = pitchfinder(floatArray);
-            console.log(frequency);
 
             if (frequency && this.onNoteDetected) {
+                console.log(frequency);
+
                 const note = this.getNote(frequency);
                 this.onNoteDetected({
-                    name: this.noteStrings[note % 12],
+                    name: this.noteNames[note % 12],
                     value: note,
                     cents: this.getCents(frequency, note),
                     octave: parseInt(note / 12) - 1,
