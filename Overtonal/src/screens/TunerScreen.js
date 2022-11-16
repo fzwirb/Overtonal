@@ -4,8 +4,7 @@ import { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import { PermissionsAndroid } from "react-native";
 import Tuner from "../components/Tuner";
-import TunerOptions from "../components/TunerOptions";
-
+import TunerOps from "../components/TunerOptions";
 
 
 export default class TunerScreen extends Component {
@@ -30,10 +29,11 @@ export default class TunerScreen extends Component {
          ]);
       }
       const tuner = new Tuner();
-      // const tunerOptions = new TunerOptions();
+      // const tunerOps = new TunerOps();
+      // tunerOps.
       // console.log(tunerOptions.sel)
 
-      tuner.start();
+      tuner.start("F", "Beginner");
       tuner.onNoteDetected = (note) => {
          if (this._lastNoteName === note.name) {
             this._update(note);
@@ -58,8 +58,8 @@ export default class TunerScreen extends Component {
                Cents={this.state.note.cents}
             </Text>
             <View style={styles.footer}>
-               <Text>Instrument Key</Text>
-               <TunerOptions></TunerOptions>
+               <Text>Tuner Options</Text>
+               <TunerOps></TunerOps>
             </View>
          </View>
       );

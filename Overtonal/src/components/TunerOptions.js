@@ -1,106 +1,109 @@
-import React, { useState, } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import React, { useState, Component} from 'react';
+import { Text, StyleSheet, View, Button } from 'react-native';
 import RadioButtonsGroup from 'react-native-radio-buttons-group';
 import RadioGroup, { RadioButton } from 'react-native-radio-buttons-group';
-import { set } from 'react-native-reanimated';
+import { SelectList } from 'react-native-dropdown-select-list'
+import ModalDropdown from 'react-native-modal-dropdown';
+import Tuner from "./Tuner";
+// @ts-nocheck
 
-export default function TunerOptions() {
-    const [radioButtons, setRadioButtons] = useState( [
-        {
-            id: 'c', // acts as primary key, should be unique and non-empty string
-            label: 'C',
-            value: 'C',
-            selected: true
-        }, {
-            id: 'bflat', // acts as primary key, should be unique and non-empty string
-            label: 'B Flat',
-            value: 'B Flat',
-            selected: false
-
-        }, {
-            id: 'eflat',
-            label: 'E Flat',
-            value: 'eflat',
-            selected: false
-
-        },{
-            id: 'f',
-            label: 'F',
-            value: 'F',
-            selected: false
-
-        }
-        ]);
-    
-        
-        bflatNoteNamesMap = new Map([
-            ["C", "D"],
-            ["C#/Db", "D#/Eb"],
-            ["D", "E"],
-            ["D#/Eb", "F"],
-            ["E", "F#/Gb"],
-            ["F", "G"],
-            ["F#/Gb", "G#/Ab"],
-            ["G", "A"],
-            ["G#/Ab", "A#/Bb"],
-            ["A", "B"],
-            ["A#/Bb", "C"],
-            ["B", "C#/Db"]
-          ]);
-          eflatNoteNamesMap = new Map([
-            ["C", "A"],
-            ["C#/Db", "A#/Bb"],
-            ["D", "B"],
-            ["D#/Eb", "C"],
-            ["E", "C#/Db"],
-            ["F", "D"],
-            ["F#/Gb", "D#/Eb"],
-            ["G", "E"],
-            ["G#/Ab", "F"],
-            ["A", "F#/Gb"],
-            ["A#/Bb", "G"],
-            ["B", "G#/Ab"]
-          ]);
-    
-          fNoteNamesMap = new Map([
-            ["C", "G"],
-            ["C#/Db", "G#/Ab"],
-            ["D", "A"],
-            ["D#/Eb", "A#/Bb"],
-            ["E", "B"],
-            ["F", "C"],
-            ["F#/Gb", "C#/Db"],
-            ["G", "D"],
-            ["G#/Ab", "D#/Eb"],
-            ["A", "E"],
-            ["A#/Bb", "F"],
-            ["B", "F#/Gb"]
-          ]);
-        
-         
-        
-        const [selected, setSelected] = useState(radioButtons[0].value)
-        
-        
-        function onPressRadioButton(radioButtonsArray) {
-            setRadioButtons(radioButtonsArray);
-            setSelected(radioButtons.find(e => e.selected == true).value);
-            }
-    return (
-            <RadioGroup 
-                radioButtons={radioButtons} 
-                onPress={onPressRadioButton} 
-                layout='row'                
-            />
-        
-    );
-
+var keySelected = 'C'
+var lvlSelected = "Beginner"
+startTuner = (k, l) => {
+    console.log("RESTART TUNER");
+    const t = new Tuner()
+    t.start(k, l)
 }
 
-const styles = StyleSheet.create({
-    radio: {
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-  });
 
+updateTuner = (k, l) => {
+
+        const tuner = new Tuner()
+        console.log("IN UPDATE TUNER");
+        if(k == null){
+            k = keySelected
+        }
+        if(l == null){
+            l = lvlSelected
+        }
+        console.log(k + " " + l);
+        tuner.stop();
+        startTuner(k, l);
+
+} 
+
+    
+const TunerOptions  = () => {
+
+    const [lvl, setLvl] = React.useState("");
+    const [key, setKey] = React.useState("");
+  
+
+    const keyList = [
+        {key:'1', value:'C'},
+        {key:'2', value:'Bb'},
+        {key:'3', value:'Eb'},
+        {key:'4', value:'F'},
+    ]
+    const lvlList = [
+        {key:'1', value:'Beginner'},
+        {key:'2', value:'Intermediate'},
+        {key:'3', value:'Advanced'},
+    ];
+
+
+    
+    
+        return (
+            //column
+            <View style={styles.container}>
+                {/* row */}
+                <View style={styles.item}>
+                    <Text>Change Key</Text>
+    
+                    <SelectList 
+                        setKey={(val) => setKey(val)} 
+                        setSelected={setKey}
+                        data={keyList} 
+                        save="value"
+                        search={false}
+                        placeholder="C"    
+                    />            
+                </View>
+                <View style={styles.item}>
+                    <Text>Change Experience Level</Text>
+    
+                    <SelectList 
+                        setLvl={(val) => setLvl(val)} 
+                        setSelected={setLvl}
+                        data={lvlList} 
+                        save="value"
+                        search={false}
+                        placeholder="Beginner"
+                    />   
+                </View>
+                <Button  onPress={ () => this.updateTuner(key, lvl)}
+                    title="Update Tuner"
+                    color="#841584"
+                    accessibilityLabel="Update tuner settings"/>
+            </View> 
+        )
+        
+    }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      alignItems: 'flex-start',
+      alignContent: 'center',
+      justifyContent:'center',
+
+    },
+    item: {
+      width: '50%' // is 50% of container width
+    }
+  })
+
+export default TunerOptions
