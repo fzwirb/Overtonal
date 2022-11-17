@@ -1,39 +1,11 @@
 import React, { useState, Component} from 'react';
 import { Text, StyleSheet, View, Button } from 'react-native';
-import RadioButtonsGroup from 'react-native-radio-buttons-group';
-import RadioGroup, { RadioButton } from 'react-native-radio-buttons-group';
-import { SelectList } from 'react-native-dropdown-select-list'
-import ModalDropdown from 'react-native-modal-dropdown';
-import Tuner from "./Tuner";
+
 // @ts-nocheck
 
-var keySelected = 'C'
-var lvlSelected = "Beginner"
-startTuner = (k, l) => {
-    console.log("RESTART TUNER");
-    const t = new Tuner()
-    t.start(k, l)
-}
-
-
-updateTuner = (k, l) => {
-
-        const tuner = new Tuner()
-        console.log("IN UPDATE TUNER");
-        if(k == null){
-            k = keySelected
-        }
-        if(l == null){
-            l = lvlSelected
-        }
-        console.log(k + " " + l);
-        tuner.stop();
-        startTuner(k, l);
-
-} 
-
-    
 const TunerOptions  = () => {
+    var keySelected = 'C'
+    var lvlSelected = "Beginner"
 
     const [lvl, setLvl] = React.useState("");
     const [key, setKey] = React.useState("");
@@ -50,60 +22,80 @@ const TunerOptions  = () => {
         {key:'2', value:'Intermediate'},
         {key:'3', value:'Advanced'},
     ];
+    noteNames= [
+        "C",
+        "C#/Db",
+        "D",
+        "D#/Eb",
+        "E",
+        "F",
+        "F#/Gb",
+        "G",
+        "G#/Ab",
+        "A",
+        "A#/Bb",
+        "B",
+    ];
+    cNoteNamesMap = new Map([
+        ["C", "C"],
+        ["C#/Db", "C#/Db"],
+        ["D", "D"],
+        ["D#/Eb", "D#/Eb"],
+        ["E", "E"],
+        ["F", "F"],
+        ["F#/Gb", "F#/Gb"],
+        ["G", "G"],
+        ["G#/Ab", "G#/Ab"],
+        ["A", "A"],
+        ["A#/Bb", "A#/Bb"],
+        ["B", "B"]
+      ]);
 
+    bflatNoteNamesMap = new Map([
+        ["C", "D"],
+        ["C#/Db", "D#/Eb"],
+        ["D", "E"],
+        ["D#/Eb", "F"],
+        ["E", "F#/Gb"],
+        ["F", "G"],
+        ["F#/Gb", "G#/Ab"],
+        ["G", "A"],
+        ["G#/Ab", "A#/Bb"],
+        ["A", "B"],
+        ["A#/Bb", "C"],
+        ["B", "C#/Db"]
+      ]);
+      eflatNoteNamesMap = new Map([
+        ["C", "A"],
+        ["C#/Db", "A#/Bb"],
+        ["D", "B"],
+        ["D#/Eb", "C"],
+        ["E", "C#/Db"],
+        ["F", "D"],
+        ["F#/Gb", "D#/Eb"],
+        ["G", "E"],
+        ["G#/Ab", "F"],
+        ["A", "F#/Gb"],
+        ["A#/Bb", "G"],
+        ["B", "G#/Ab"]
+      ]);
 
-    
-    
-        return (
-            //column
-            <View style={styles.container}>
-                {/* row */}
-                <View style={styles.item}>
-                    <Text>Change Key</Text>
-    
-                    <SelectList 
-                        setKey={(val) => setKey(val)} 
-                        setSelected={setKey}
-                        data={keyList} 
-                        save="value"
-                        search={false}
-                        placeholder="C"    
-                    />            
-                </View>
-                <View style={styles.item}>
-                    <Text>Change Experience Level</Text>
-    
-                    <SelectList 
-                        setLvl={(val) => setLvl(val)} 
-                        setSelected={setLvl}
-                        data={lvlList} 
-                        save="value"
-                        search={false}
-                        placeholder="Beginner"
-                    />   
-                </View>
-                <Button  onPress={ () => this.updateTuner(key, lvl)}
-                    title="Update Tuner"
-                    color="#841584"
-                    accessibilityLabel="Update tuner settings"/>
-            </View> 
-        )
-        
-    }
+      fNoteNamesMap = new Map([
+        ["C", "G"],
+        ["C#/Db", "G#/Ab"],
+        ["D", "A"],
+        ["D#/Eb", "A#/Bb"],
+        ["E", "B"],
+        ["F", "C"],
+        ["F#/Gb", "C#/Db"],
+        ["G", "D"],
+        ["G#/Ab", "D#/Eb"],
+        ["A", "E"],
+        ["A#/Bb", "F"],
+        ["B", "F#/Gb"]
+      ]);
+       
+}
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      alignItems: 'flex-start',
-      alignContent: 'center',
-      justifyContent:'center',
-
-    },
-    item: {
-      width: '50%' // is 50% of container width
-    }
-  })
 
 export default TunerOptions

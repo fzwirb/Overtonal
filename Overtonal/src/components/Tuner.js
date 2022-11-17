@@ -1,11 +1,6 @@
 // import Recording from 'react-native-recording'
 import AudioRecord from 'react-native-audio-record';
 import { Buffer } from 'buffer';
-
-
-
-// const { Recording } = require('react-native-recording');
-
 import pitchFinder from "pitchfinder";
 
 export default class Tuner {
@@ -108,7 +103,7 @@ export default class Tuner {
             this.noteMap  = this.fNoteNamesMap;
         }
 
-        console.log(this.noteMap)
+        // console.log(this.noteMap)
         const options = {
             sampleRate: 44100,  // default 44100
             channels: 1,        // 1 or 2, default 1
@@ -127,6 +122,8 @@ export default class Tuner {
             chunk = Buffer.from(data, "base64");
             floatArray = new Float32Array(chunk);
             const frequency = pitchfinder(floatArray);
+            console.log(frequency);
+            // console.log(this)
             if (frequency && this.onNoteDetected) {
                 console.log(frequency);
                 const note = this.getNote(frequency);
