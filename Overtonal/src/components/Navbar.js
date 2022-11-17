@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getFocusedRouteNameFromRoute, NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
