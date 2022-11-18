@@ -126,7 +126,10 @@ export default class Tuner {
             // console.log(data)
             chunk = Buffer.from(data, "base64");
             floatArray = new Float32Array(chunk);
-            const frequency = pitchfinder(floatArray);
+            var frequency = pitchfinder(floatArray);
+            if(frequency > 7900){
+                frequency = null;
+            }
             // console.log(frequency);
             // console.log(this)
             if (frequency && this.onNoteDetected) {
@@ -138,10 +141,16 @@ export default class Tuner {
                     cents: this.getCents(frequency, note),
                     octave: parseInt(note / 12) - 1,
                     frequency: frequency,
-                    txtColor: this.getColor(this.state.cents, lvl)
+                    txtColor: this.getColor(this.state.cents, lvl),
+                    txtCents: this.centStr(this.state.cents)
                 });
             }
         });
+    }
+    centStr(cents){
+        if(cents > 0){
+            return ('+' + cents);
+        }
     }
     getColor(cents , l){
         console.log("IN GET COLOR");
@@ -215,7 +224,7 @@ export default class Tuner {
     getCents(frequency, note) {
 
         this.state.cents = Math.floor(
-            (1200 * Math.log(frequency / this.getStandardFrequency(note))) /
+            (1200.00 * Math.log(frequency / this.getStandardFrequency(note))) /
             Math.log(2)
         );
 

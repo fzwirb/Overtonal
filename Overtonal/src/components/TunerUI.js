@@ -49,7 +49,7 @@ export default class TunerUI extends PureComponent {
 const style = StyleSheet.create({
   meter: {
     height: 200,
-    marginBottom: 40,
+    marginBottom: 20,
     marginTop: 40,
   },
   origin: {

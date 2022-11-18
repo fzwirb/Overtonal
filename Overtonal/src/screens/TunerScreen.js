@@ -17,6 +17,7 @@ export default class TunerScreen extends Component {
          frequency: 440,
          key: "C",
          lvl: "Beginner",
+         txtCents: '0'
       },
    };
 
@@ -126,15 +127,12 @@ export default class TunerScreen extends Component {
       return (
          <View style={styles.container}>
             <StatusBar backgroundColor="#000" translucent />
-            <Text>
-               Note={this.state.note.name}
-            </Text>
-            <Text>
-               {this.state.note.frequency.toFixed(1)} Hz
-            </Text>
-            <Text style={{color: this.state.note.txtColor}}>Cents={this.state.note.cents} 
-            </Text>
             <TunerUI cents={this.state.note.cents} />
+            <Text style={{color: this.state.note.txtColor, fontSize: 65, paddingBottom: 5, paddingTop: 10}}>
+               {this.state.note.name}
+            </Text>
+            <Text style={{color: this.state.note.txtColor, fontSize: 25, paddingBottom: 10}}>{(this.state.note.txtCents)}
+            </Text>
             <View style={styles.footer}>
                <Text>Tuner Options</Text>
                <this.TunerOptions></this.TunerOptions>
@@ -150,6 +148,11 @@ var styles = StyleSheet.create({
        justifyContent: "center",
        alignItems: "center",
        backgroundColor: '#F5FCFF',
+   },
+   notename: {
+      // color: this.state.note.txtColor,
+      fontSize: 28,
+      fontWeight: 'bold',
    },
    titleWrapper: {
 
