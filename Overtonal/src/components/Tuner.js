@@ -2,8 +2,15 @@
 import AudioRecord from 'react-native-audio-record';
 import { Buffer } from 'buffer';
 import pitchFinder from "pitchfinder";
+import TunerScreen from '../screens/TunerScreen';
+
 
 export default class Tuner {
+
+    state = {
+        cents: 0,
+    }
+
     middleA = 440;
     semitone = 69;
     noteNames= [
@@ -113,16 +120,14 @@ export default class Tuner {
         };
         
         const pitchfinder = pitchFinder.YIN({ sampleRate: 44100 });
-
         AudioRecord.init(options);
-
         AudioRecord.start();
         AudioRecord.on('data', data => {
             // console.log(data)
             chunk = Buffer.from(data, "base64");
             floatArray = new Float32Array(chunk);
             const frequency = pitchfinder(floatArray);
-            console.log(frequency);
+            // console.log(frequency);
             // console.log(this)
             if (frequency && this.onNoteDetected) {
                 console.log(frequency);
@@ -133,15 +138,65 @@ export default class Tuner {
                     cents: this.getCents(frequency, note),
                     octave: parseInt(note / 12) - 1,
                     frequency: frequency,
+                    txtColor: this.getColor(this.state.cents, lvl)
                 });
             }
         });
     }
+    getColor(cents , l){
+        console.log("IN GET COLOR");
+        console.log(typeof cents);
+
+        if(l == "Beginner"){
+         if(cents > -10 && cents < 10){
+            console.log("GREEN");
+            return "#00FF00";
+         }
+         //note is flat
+         else if(cents <= -10){
+            console.log("BLUE");
+            return "#0000FF";
+         }
+         //note is sharp
+         else{
+            console.log("RED");
+            return "#FF0000";
+         }
+      }
+      else if(l == "Intermediate"){
+         if(cents > -5 && cents < 5){
+            return "#00FF00";
+         }
+         //note is flat
+         else if(cents <= -5){
+            return "#0000FF";
+         }
+         //note is sharp
+         else{
+            return "#FF0000";
+         }
+      }
+      //advanced
+      else{
+         console.log("IN LVL");
+         if(cents > -2 && cents < 2){
+            return "#00FF00";
+         }
+         //note is flat
+         else if(cents <= -2){
+            return "#0000FF";
+         }
+         //note is sharp
+         else{
+            return "#FF0000";
+         }
+      }
+    }
+
     stop(){
         AudioRecord.stop();
         console.log("TUNER STOP");
     }
-
     /**
      * get musical note from frequency
      */
@@ -156,12 +211,14 @@ export default class Tuner {
 
     /**
      * get cents difference between given frequency and musical note's standard frequency
-     *
      */
     getCents(frequency, note) {
-        return Math.floor(
+
+        this.state.cents = Math.floor(
             (1200 * Math.log(frequency / this.getStandardFrequency(note))) /
             Math.log(2)
         );
+
+        return this.state.cents;
     }
 }

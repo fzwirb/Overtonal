@@ -3,7 +3,8 @@ import { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar, Button } from 'react-native';
 import { PermissionsAndroid } from "react-native";
 import Tuner from "../components/Tuner";
-import { SelectList } from 'react-native-dropdown-select-list'
+import TunerUI from "../components/TunerUI";
+import { SelectList } from 'react-native-dropdown-select-list';
 
 var tuner = new Tuner();
 export default class TunerScreen extends Component {
@@ -15,7 +16,7 @@ export default class TunerScreen extends Component {
          octave: 4,
          frequency: 440,
          key: "C",
-         lvl: "Beginner"
+         lvl: "Beginner",
       },
    };
 
@@ -57,8 +58,12 @@ export default class TunerScreen extends Component {
          } else {
             this._lastNoteName = note.name;
          }
+         if (this._lastNoteName === note.name) {
+            this._update(note);
+         } else {
+            this._lastNoteName = note.name;
+         }         
       };
-
    }
    //params for drop downs which set and change tuner params
    TunerOptions  = () => {
@@ -127,21 +132,23 @@ export default class TunerScreen extends Component {
             <Text>
                {this.state.note.frequency.toFixed(1)} Hz
             </Text>
-            <Text>
-               Cents={this.state.note.cents}
+            <Text style={{color: this.state.note.txtColor}}>Cents={this.state.note.cents} 
             </Text>
+            <TunerUI cents={this.state.note.cents} />
             <View style={styles.footer}>
                <Text>Tuner Options</Text>
                <this.TunerOptions></this.TunerOptions>
             </View>
          </View>
       );
-   }
+   } 
 }
 
 var styles = StyleSheet.create({
    container: {
        flex: 1,
+       justifyContent: "center",
+       alignItems: "center",
        backgroundColor: '#F5FCFF',
    },
    titleWrapper: {
