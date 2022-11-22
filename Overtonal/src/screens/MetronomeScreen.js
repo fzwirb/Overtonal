@@ -110,7 +110,6 @@ export default function metronome() {
   }
   function incrementTempo(temp){
     if (temp < 200) {
-      // log.d("HERE")
       tempo = temp + 1
       Slider.step++
       setTempoNum(tempo)

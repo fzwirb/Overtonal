@@ -8,8 +8,6 @@ import { SelectList } from 'react-native-dropdown-select-list';
 
 var tuner = new Tuner();
 export default class TunerScreen extends Component {
-
-   
    state = {
       note: {
          name: "A",
@@ -91,7 +89,6 @@ export default class TunerScreen extends Component {
                   {/* row */}
                   <View style={styles.item}>
                       <Text>Change Key</Text>
-      
                       <SelectList 
                           setKey={(val) => setKey(val)} 
                           setSelected={setKey}
@@ -134,7 +131,6 @@ export default class TunerScreen extends Component {
             <Text style={{color: this.state.note.txtColor, fontSize: 25, paddingBottom: 10}}>{(this.state.note.txtCents)}
             </Text>
             <View style={styles.footer}>
-               <Text>Tuner Options</Text>
                <this.TunerOptions></this.TunerOptions>
             </View>
          </View>
@@ -176,6 +172,8 @@ var styles = StyleSheet.create({
 
     },
     item: {
-      width: '50%' // is 50% of container width
+      width: '50%', // is 50% of container width
+      paddingRight: 15,
+      paddingLeft: 15,
     }
 });

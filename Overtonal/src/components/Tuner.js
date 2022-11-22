@@ -116,7 +116,6 @@ export default class Tuner {
             channels: 1,        // 1 or 2, default 1
             bitsPerSample: 8,  // 8 or 16, default 16
             audioSource: 6,     // android only (see below)
-            wavFile: 'test.wav' // default 'audio.wav'
         };
         
         const pitchfinder = pitchFinder.YIN({ sampleRate: 44100 });
@@ -151,6 +150,7 @@ export default class Tuner {
         if(cents > 0){
             return ('+' + cents);
         }
+        return cents;
     }
     getColor(cents , l){
         console.log("IN GET COLOR");
