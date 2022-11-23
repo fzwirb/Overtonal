@@ -53,14 +53,7 @@ export default function metronome() {
       <StatusBar style="auto" />
     </View>
   );
-  /**
-   * 
-   * @TODO:
-   * 
-   * is there a way to update the sliders thumb positon without sliding?
-   * might need to build a slider from scratch, not sure if this one supports that
-   * 
-   */
+
 
   function updateValues(value){
     setTempoText(value);

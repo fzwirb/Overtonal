@@ -44,7 +44,8 @@ constructor(props) {
   this.state = {
     playing: false,
     beats: 4,
-    accent: false
+    accent: false,
+    accentStatus: "Accent OFF"
   }
 }
 /**
@@ -82,12 +83,15 @@ MetOptions  = () => {
 const [isSelected, setSelection] = useState(false);
 
 turnOnAccent = () => {
-  console.log("IN turnOnAccent")
-  if(this.state.accent === false){
+  console.log("IN turnOnAccent");
+  console.log(this.state.accentStatus);
+
+  if(this.state.accent == false){
     this.state.accent = true;
-    return
+    return;
   }
   this.state.accent = false;
+  return;
 }
 
 return (
@@ -95,8 +99,8 @@ return (
     <View style={styles.checkboxContainer}>
       <CheckBox
         value={isSelected}
-        onValueChange={setSelection}
-        onChange={turnOnAccent()}
+        onValueChange={(setSelection)}
+        onChange={(setSelection) => turnOnAccent()}
         style={styles.checkbox}
       />
     <Text>Accent: {isSelected ? "ON" : "OFF"}</Text>
