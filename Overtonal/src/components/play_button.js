@@ -1,12 +1,13 @@
 import React, { Component, useState } from 'react'
 import Play from './play'
 import Pause from './pause'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, Button } from 'react-native'
 import CheckBox from '@react-native-community/checkbox';
+import colors from './colors';
 
 
 import Sound from 'react-native-sound';
-import { and } from 'react-native-reanimated';
+import { and, color } from 'react-native-reanimated';
 Sound.setCategory('Playback'); 
 
 global.counter = 0;
@@ -87,14 +88,25 @@ turnOnAccent = () => {
   console.log(this.state.accentStatus);
 
   if(this.state.accent == false){
-    this.state.accent = true;
+    this.setState({accent: true});
     return;
   }
-  this.state.accent = false;
+  this.setState({accent: false});
   return;
+}
+changeBeats = (num) => {
+  current = this.state.beats;
+  current = current + num;
+  if(current === 0 || current > 16){
+    return
+  }
+  //else
+  this.setState({beats: current})
+  console.log(this.state.beats)
 }
 
 return (
+  <View>
     <View style={styles.checkboxContainer}>
       <CheckBox
         value={isSelected}
@@ -103,8 +115,26 @@ return (
         style={styles.checkbox}
       />
       <Text style={{alignItems: 'center', alignContent: 'center', justifyContent: 'center', marginLeft: 10, fontSize: 23}}>Accent: {isSelected ? "ON" : "OFF"}</Text>
+    </View>
+    <View style={styles.beatsRow}>
+      <View style={styles.beatsCol}>
+      <Button
+        onPress = {value => changeBeats(1)}
+        title = "+"
+        color = {colors.primary}
+        fontSize = "50"
+      /> 
+      <Button
+        onPress = {value => changeBeats(-1)}
+        title = "-"
+        color = {colors.primary}
+        fontSize = "50"
+      />
+      </View>
+        <Text style={{fontSize: 20}}> Beats: {this.state.beats} </Text>
 
     </View>
+  </View>
 
 );
 };
@@ -124,13 +154,27 @@ return (
 }
 const styles = StyleSheet.create({
   checkboxContainer: {
-    paddingTop: 30,
+    marginTop: 70,
     flexDirection: "row",
     marginBottom: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+
+
   },
   checkbox: {
     alignSelf: "center",
   },
+  beatsRow: {
+    flexDirection: "row",
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10
+  },
+  beatsCol: {
+  marginRight: 10,  
+}
 
 });
 
