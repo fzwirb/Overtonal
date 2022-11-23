@@ -53,9 +53,16 @@ constructor(props) {
  * Method that handles playing the audio of the metronome
  */
  playClick = () => {
+   console.log(this.state.accent)
+   console.log(counter + ' === ' + this.state.beats)
+
    if(counter === this.state.beats && this.state.accent){
      accentClick.play();
      counter = 1;
+   }
+   else if(counter === this.state.beats){
+    click.play();
+    counter = 1;
    }
    else{
     click.play();
@@ -67,7 +74,6 @@ constructor(props) {
  */
 startAndStop = () =>{ 
   if(this.state.playing) {
-    console.log("HERE")
     clearInterval(this.timer);
     this.setState({playing: false});
   }    
@@ -84,10 +90,10 @@ MetOptions  = () => {
 const [isSelected, setSelection] = useState(false);
 
 turnOnAccent = () => {
-  console.log("IN turnOnAccent");
-  console.log(this.state.accentStatus);
+  // console.log("IN turnOnAccent");
+  // console.log(this.state.accentStatus);
 
-  if(this.state.accent == false){
+  if(!this.state.accent){
     this.setState({accent: true});
     return;
   }
@@ -102,7 +108,8 @@ changeBeats = (num) => {
   }
   //else
   this.setState({beats: current})
-  console.log(this.state.beats)
+  counter = current;
+  // console.log(this.state.beats)
 }
 
 return (
