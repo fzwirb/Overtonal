@@ -95,7 +95,6 @@ turnOnAccent = () => {
 }
 
 return (
-  <View>
     <View style={styles.checkboxContainer}>
       <CheckBox
         value={isSelected}
@@ -103,19 +102,22 @@ return (
         onChange={(setSelection) => turnOnAccent()}
         style={styles.checkbox}
       />
-    <Text>Accent: {isSelected ? "ON" : "OFF"}</Text>
+      <Text style={{alignItems: 'center', alignContent: 'center', justifyContent: 'center', marginLeft: 10, fontSize: 23}}>Accent: {isSelected ? "ON" : "OFF"}</Text>
+
     </View>
-  </View>
+
 );
 };
 
   render() {
     return (
       <View className="player" >
-        <View>
+        <View style={{alignContent: 'center', alignItems: 'center', justifyContent: 'center'}}>
         {this.state.playing? <Pause onPlayerClick={this.startAndStop} /> : <Play onPlayerClick={this.startAndStop} />}
         </View>
+        <View>
         <this.MetOptions></this.MetOptions>
+        </View>
       </View>
     )
   }
