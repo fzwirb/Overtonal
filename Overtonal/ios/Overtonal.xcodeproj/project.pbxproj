@@ -11,9 +11,8 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		693ED2C1292CB56F000D11E0 /* Synth_Bell_B_lo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 693ED2C0292CB56F000D11E0 /* Synth_Bell_B_lo.wav */; };
-		693ED2C3292CB580000D11E0 /* Synth_Bell_B_hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 693ED2C2292CB580000D11E0 /* Synth_Bell_B_hi.wav */; };
-		697FB2BE28FCF7F900F54752 /* Synth_Block_E_lo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 697FB2BD28FCF7F900F54752 /* Synth_Block_E_lo.wav */; };
+		699143A42935794F00BF692B /* synth_bell_b_hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 699143A22935794F00BF692B /* synth_bell_b_hi.wav */; };
+		699143A52935794F00BF692B /* synth_bell_b_lo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 699143A32935794F00BF692B /* synth_bell_b_lo.wav */; };
 		7699B88040F8A987B510C191 /* libPods-Overtonal-OvertonalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Overtonal-OvertonalTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		971FEEFED5BF610FF34CFFB5 /* libPods-Overtonal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Overtonal.a */; };
@@ -44,9 +43,8 @@
 		5709B34CF0A7D63546082F79 /* Pods-Overtonal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Overtonal.release.xcconfig"; path = "Target Support Files/Pods-Overtonal/Pods-Overtonal.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Overtonal-OvertonalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Overtonal-OvertonalTests.debug.xcconfig"; path = "Target Support Files/Pods-Overtonal-OvertonalTests/Pods-Overtonal-OvertonalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Overtonal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Overtonal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		693ED2C0292CB56F000D11E0 /* Synth_Bell_B_lo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Synth_Bell_B_lo.wav; sourceTree = "<group>"; };
-		693ED2C2292CB580000D11E0 /* Synth_Bell_B_hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Synth_Bell_B_hi.wav; sourceTree = "<group>"; };
-		697FB2BD28FCF7F900F54752 /* Synth_Block_E_lo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Synth_Block_E_lo.wav; sourceTree = "<group>"; };
+		699143A22935794F00BF692B /* synth_bell_b_hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = synth_bell_b_hi.wav; path = "../../../../../Downloads/Metronomes (1)/synth_bell_b_hi.wav"; sourceTree = "<group>"; };
+		699143A32935794F00BF692B /* synth_bell_b_lo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = synth_bell_b_lo.wav; path = "../../../../../Downloads/Metronomes (1)/synth_bell_b_lo.wav"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Overtonal/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Overtonal-OvertonalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Overtonal-OvertonalTests.release.xcconfig"; path = "Target Support Files/Pods-Overtonal-OvertonalTests/Pods-Overtonal-OvertonalTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -122,9 +120,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				693ED2C2292CB580000D11E0 /* Synth_Bell_B_hi.wav */,
-				693ED2C0292CB56F000D11E0 /* Synth_Bell_B_lo.wav */,
-				697FB2BD28FCF7F900F54752 /* Synth_Block_E_lo.wav */,
+				699143A22935794F00BF692B /* synth_bell_b_hi.wav */,
+				699143A32935794F00BF692B /* synth_bell_b_lo.wav */,
 				13B07FAE1A68108700A75B9A /* Overtonal */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* OvertonalTests */,
@@ -251,10 +248,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				693ED2C3292CB580000D11E0 /* Synth_Bell_B_hi.wav in Resources */,
-				693ED2C1292CB56F000D11E0 /* Synth_Bell_B_lo.wav in Resources */,
+				699143A42935794F00BF692B /* synth_bell_b_hi.wav in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				697FB2BE28FCF7F900F54752 /* Synth_Block_E_lo.wav in Resources */,
+				699143A52935794F00BF692B /* synth_bell_b_lo.wav in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

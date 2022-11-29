@@ -15,7 +15,7 @@ global.counter = 0;
  * Init the variable to store the sound used by the metronome
  */
 //Synth_Bell_B_lo.wav
-var click = new Sound('Synth_Bell_B_lo.wav', Sound.MAIN_BUNDLE, (error) => {
+var click = new Sound('synth_bell_b_lo.wav', Sound.MAIN_BUNDLE, (error) => {
   if (error) {
     console.log('failed to load the sound', error);
     return;
@@ -25,7 +25,7 @@ var click = new Sound('Synth_Bell_B_lo.wav', Sound.MAIN_BUNDLE, (error) => {
 });
 
 
-var accentClick = new Sound('Synth_Bell_B_hi.wav', Sound.MAIN_BUNDLE, (error) => {
+var accentClick = new Sound('synth_bell_b_hi.wav', Sound.MAIN_BUNDLE, (error) => {
     if (error) {
       console.log('failed to load the sound', error);
       return;
@@ -53,9 +53,8 @@ constructor(props) {
  * Method that handles playing the audio of the metronome
  */
  playClick = () => {
-   console.log(this.state.accent)
-   console.log(counter + ' === ' + this.state.beats)
-
+  //  console.log(this.state.accent)
+  //  console.log(counter + ' === ' + this.state.beats)
    if(counter === this.state.beats && this.state.accent){
      accentClick.play();
      counter = 1;

@@ -132,7 +132,7 @@ export default class Tuner {
             // console.log(frequency);
             // console.log(this)
             if (frequency && this.onNoteDetected) {
-                console.log(frequency);
+                // console.log(frequency);
                 const note = this.getNote(frequency);
                 this.onNoteDetected({
                     name: this.noteMap.get(this.noteNames[note % 12]),
@@ -153,22 +153,19 @@ export default class Tuner {
         return cents;
     }
     getColor(cents , l){
-        console.log("IN GET COLOR");
-        console.log(typeof cents);
+        // console.log("IN GET COLOR");
+        // console.log(typeof cents);
 
         if(l == "Beginner"){
          if(cents > -10 && cents < 10){
-            console.log("GREEN");
             return "#00FF00";
          }
          //note is flat
          else if(cents <= -10){
-            console.log("BLUE");
             return "#0000FF";
          }
          //note is sharp
          else{
-            console.log("RED");
             return "#FF0000";
          }
       }

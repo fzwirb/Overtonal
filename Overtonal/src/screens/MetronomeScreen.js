@@ -7,7 +7,7 @@ import Player from '../components/play_button';
 
 global.tempo = 120; 
  
-export default function metronome() {
+export default function Metronome() {
   const [range, setRange] = useState(tempo +  ' BPM');
   const [sliding, setSliding] = useState('Allegro');
  
