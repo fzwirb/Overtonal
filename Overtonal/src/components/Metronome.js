@@ -1,9 +1,9 @@
 import React, { Component, useState } from 'react'
-import Play from './play'
-import Pause from './pause'
+import Play from './Play'
+import Pause from './Pause'
 import { View, StyleSheet, Text, Button } from 'react-native'
 import CheckBox from '@react-native-community/checkbox';
-import colors from './colors';
+import colors from './Colors';
 
 
 import Sound from 'react-native-sound';
@@ -124,13 +124,13 @@ return (
     </View>
     <View style={styles.beatsRow}>
       <View style={styles.beatsCol}>
-      <Button
+      <Button style={{padding: 5}}
         onPress = {value => changeBeats(1)}
         title = "+"
         color = {colors.primary}
         fontSize = "50"
       /> 
-      <Button
+      <Button style={{padding: 5}}
         onPress = {value => changeBeats(-1)}
         title = "-"
         color = {colors.primary}

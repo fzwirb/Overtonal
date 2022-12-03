@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, Dimensions, StyleSheet, Text, View } from 'react-native';
 import Slider from '@react-native-community/slider';
 import React, { useState } from 'react';
-import colors from "../components/colors";
-import Player from '../components/play_button';
+import colors from "../components/Colors";
+import Player from '../components/Metronome';
 
 global.tempo = 120; 
  

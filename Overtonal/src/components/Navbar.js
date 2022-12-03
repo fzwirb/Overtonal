@@ -24,8 +24,10 @@ export default function Navbar() {
                         let routeName = route.name;
 
                         if (routeName == metScreen) {
+                            console.log("METCLICKED")
                             iconName = focused ? 'pulse' : 'pulse-outline'
                         } else if (routeName == tunerScreen) {
+                            console.log("TUNERCLICKED")
                             iconName = focused ? 'mic' : 'mic-outline'
                         }
                         return <Ionicons name={iconName} size={size} color={color} />

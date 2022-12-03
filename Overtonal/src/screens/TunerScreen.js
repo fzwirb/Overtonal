@@ -5,6 +5,7 @@ import { PermissionsAndroid } from "react-native";
 import Tuner from "../components/Tuner";
 import TunerUI from "../components/TunerUI";
 import { SelectList } from 'react-native-dropdown-select-list';
+import colors from '../components/colors';
 
 var tuner = new Tuner();
 export default class TunerScreen extends Component {
@@ -128,7 +129,7 @@ export default class TunerScreen extends Component {
             <Text style={{color: this.state.note.txtColor, fontSize: 65, paddingBottom: 5, paddingTop: 10}}>
                {this.state.note.name}
             </Text>
-            <Text style={{color: this.state.note.txtColor, fontSize: 25, paddingBottom: 10}}>{(this.state.note.txtCents)}
+            <Text style={{color: this.state.note.txtColor, fontSize: 30, paddingBottom: 10}}>{(this.state.note.txtCents)}
             </Text>
             <View style={styles.footer}>
                <this.TunerOptions></this.TunerOptions>
